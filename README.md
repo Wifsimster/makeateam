@@ -1,3 +1,3 @@
 # makeateam
 
-Make a team - Vue.js
+Make a team - Vue.js PoC
