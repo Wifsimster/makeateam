@@ -1,21 +1,21 @@
 <template>
   <div class="app">
-    <com-navigation></com-navigation>
-    <com-list></com-list>
     <com-header></com-header>
+    <com-list></com-list>
     <router-view></router-view>
+    <com-footer></com-footer>
   </div>
 </template>
 
 <script>
-import ComHeader from "components/HeaderComponent.vue"
-import ComNavigation from "components/NavigationComponent.vue"
-import ComList from "components/ListComponent.vue"
+import ComHeader from "components/Header.vue"
+import ComFooter from "components/Footer.vue"
+import ComList from "components/List.vue"
 
-import material from "material-design-icons/iconfont/material-icons.css"
+import "beta-scss/packages/global.scss"
 
 export default {
-  components: { ComHeader, ComNavigation, ComList },
+  components: { ComHeader, ComList, ComFooter },
   events: {
     randomize: function(teams) {
       this.$broadcast("teamsUpdate", teams)
@@ -32,11 +32,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.content {
-  margin: 0 auto;
-  padding: 0 20px;
-  max-width: 1024px;
-}
-</style>

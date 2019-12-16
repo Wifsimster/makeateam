@@ -1,7 +1,7 @@
-<template keep-alive>
-  <div id="list">
+<template>
+  <div>
     <div>
-      <form id="title">
+      <form>
         <div>
           <input v-model="playersList.name" />
         </div>
@@ -9,28 +9,19 @@
     </div>
 
     <template v-for="player in playersList.list">
-      <div>
-        <div>
-          <i class="material-icons account">account_box</i>
-        </div>
-        <div>
-          <form>
-            <input type="text" v-model="player.name" placeholder="Player" />
-            <a class="delete" @click="remove(player)">
-              <i class="material-icons">delete</i>
-            </a>
-          </form>
-        </div>
-      </div>
+      <form>
+        <input type="text" v-model="player.name" placeholder="Player" />
+        <a class="delete" @click="remove(player)">
+          <i class="material-icons">delete</i>
+        </a>
+      </form>
     </template>
 
-    <div class="list-item add">
-      <div>
-        <button @click="add()">
-          New player
-        </button>
-        <button @click="reset()">New list</button>
-      </div>
+    <div>
+      <button @click="add()">
+        New player
+      </button>
+      <button @click="reset()">New list</button>
     </div>
 
     <form id="control">
@@ -47,7 +38,7 @@
         </select>
       </div>
 
-      <div class="control-buttons">
+      <div>
         <button @click="randomize()">
           Randomize
         </button>
@@ -177,69 +168,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-#list {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  overflow: auto;
-  margin-left: -350px;
-  width: 100%;
-  height: 33%;
-  border-bottom: 1px solid #ddd;
-  #title {
-    margin-top: 16px;
-    text-align: center;
-    }
-  .list-item {
-    padding: 0.9em 1em;
-    border-bottom: 1px solid #ddd;
-    border-left: 6px solid transparent;
-    .pure-form {
-      padding-top: 14px;
-      input[type='text'] {
-        width: calc(100% - 45px);
-        }
-      }
-    .delete {
-      font-size: 80%;
-      margin: 1px 0 0 4px;
-      padding: 4px 6px;
-      }
-    .account {
-      border-radius: 3px;
-      margin-right: 5px;
-      font-size: 42px;
-      padding-top: 10px;
-      }
-    h1 {
-      margin: 20px 0 0 0;
-      font-size: 20px;
-      }
-    }
-  }
-.add {
-  display: block;
-  text-align: center;
-  i.material-icons {
-    float: left;
-    margin-top: -4px;
-    }
-  }
-#control {
-  padding-top: 12px;
-  .control-buttons {
-    text-align: center;
-    }
-  }
-
-@media (min-width: 60em) {
-  #list {
-    margin-left: -350px;
-    width:350px;
-    height: 100%;
-    border-right: 1px solid #ddd;
-    }
-  }
-</style>
