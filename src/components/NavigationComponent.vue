@@ -1,57 +1,62 @@
-<template v-if="login" keep-alive>
-<div class="pure-u" id="nav">
-  <a href="#" class="nav-menu-button">Menu</a>
-  <div class="nav-inner">
-    <div class="pure-menu">
-      <h1 class="pure-menu-heading">Lists</h1>
-      <ul class="pure-menu-list" v-for="list in playersList">
-        <li class="pure-menu-item">
-          <a class="pure-menu-link">
-            <span v-on:click="loadPlayers(list)">
-              <span class="label" v-bind:style="{'background-color': list.color}"></span>
-              {{ list.name }} ({{list.list.length}})
-  </span>
-            <i class="material-icons delete" v-on:click="remove(list)">delete</i>
-  </a>
-  </li>
-  </ul>
-  </div>
-  </div>
+<template keep-alive>
+  <div id="nav">
+    <a href="#" class="nav-menu-button">Menu</a>
+    <div class="nav-inner">
+      <div class="pure-menu">
+        <h1 class="pure-menu-heading">Lists</h1>
+        <ul class="pure-menu-list" v-for="list in playersList">
+          <li class="pure-menu-item">
+            <a class="pure-menu-link">
+              <span v-on:click="loadPlayers(list)">
+                <span
+                  class="label"
+                  v-bind:style="{ 'background-color': list.color }"
+                ></span>
+                {{ list.name }} ({{ list.list.length }})
+              </span>
+              <i class="material-icons delete" v-on:click="remove(list)"
+                >delete</i
+              >
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        playersList: {}
-      }
+export default {
+  data() {
+    return {
+      playersList: {}
+    }
+  },
+  ready() {
+    this.getPlayers()
+  },
+  methods: {
+    getPlayers() {
+      var localPlayers = JSON.parse(localStorage.getItem("playersList")) || []
+      this.$set("playersList", localPlayers)
     },
-    ready () {
-      this.getPlayers();
+    loadPlayers(list) {
+      this.$dispatch("loadPlayers", list)
     },
-    methods: {
-      getPlayers() {
-        var localPlayers = JSON.parse(localStorage.getItem('playersList')) || [];
-        this.$set('playersList', localPlayers);
-      },
-      loadPlayers(list) {
-        this.$dispatch('loadPlayers', list);
-      },
-      remove(list) {
-        var array = this.playersList.filter(function(obj) {
-          return obj.id !== list.id;
-        });        
-        localStorage.setItem('playersList', JSON.stringify(array));
-        this.$dispatch('newPlayersList');
-      }
-    },
-    events: {
-      renderPlayersList() {
-        this.getPlayers();
-      }
+    remove(list) {
+      var array = this.playersList.filter(function(obj) {
+        return obj.id !== list.id
+      })
+      localStorage.setItem("playersList", JSON.stringify(array))
+      this.$dispatch("newPlayersList")
+    }
+  },
+  events: {
+    renderPlayersList() {
+      this.getPlayers()
     }
   }
+}
 </script>
 
 <style lang="sass" scoped>
@@ -105,7 +110,7 @@
       top: 8px;
       right: 3px;
       font-size: 18px;
-      }      
+      }
     &:hover .delete {
       display: inline-block;
       }

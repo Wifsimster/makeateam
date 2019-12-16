@@ -1,16 +1,14 @@
 <template>
-<div class="footer">
-  <p>@Wifsimster &copy;2016</p>
+  <div class="footer">
+    <p>@Wifsimster &copy;2016</p>
   </div>
 </template>
 
-<script></script>
-
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 p {
   width: 100%;
   position: relative;
   display: flex;
   margin: 0 auto;
-  }
+}
 </style>

@@ -20,7 +20,8 @@ module.exports = {
       fonts: path.join(__dirname, "../static/fonts/"),
       api: path.join(__dirname, "../src/api/"),
       components: path.join(__dirname, "../src/components/"),
-      pages: path.join(__dirname, "../src/pages/")
+      pages: path.join(__dirname, "../src/pages/"),
+      plugins: path.join(__dirname, "../src/plugins/")
     }
   },
   plugins: [

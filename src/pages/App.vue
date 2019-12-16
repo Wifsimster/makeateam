@@ -1,11 +1,9 @@
 <template>
   <div class="app">
-    <div class="content" id="layout">
-      <com-navigation></com-navigation>
-      <com-list></com-list>
-      <com-header></com-header>
-      <router-view></router-view>
-    </div>
+    <com-navigation></com-navigation>
+    <com-list></com-list>
+    <com-header></com-header>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -40,12 +38,5 @@ export default {
   margin: 0 auto;
   padding: 0 20px;
   max-width: 1024px;
-}
-
-@media (min-width: 40em) {
-  #layout {
-    padding-left: 500px;
-    position: relative;
-  }
 }
 </style>
